@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\User;
+namespace App\Services;
 
 use App\Models\User;
 
@@ -13,9 +13,9 @@ class UserService{
     }
 
     static function UpdateUser($data, $user){
-        $user->username = $data["username"]; 
-        $user->email = $data["email"];
-        $user->password = bcrypt($data["password"]);
+        $user->username = $data["username"]? $data["username"]:$user->username; 
+        $user->email = $data["email"]? $data["email"]:$user->email;
+        $user->password = bcrypt($data["password"]? $data["password"]:$user->password);
 
         $user->save();
         return $user;
@@ -35,7 +35,7 @@ class UserService{
         });
     }
 
-    function RefreshUser($id){
+    static function RefreshUser($id){
        $user = User::where('id', $id)->first();
     return $user;
     }
