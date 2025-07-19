@@ -10,12 +10,33 @@ class UserService{
             return User::all();
     }
 
-    static function getUsersById($id){
+    static function getUserById($id){
         return User::find($id);
     }
 
     static function getUsersByName($name){
         return User::find($name);
+    }
+
+    function rejectUserByID($id){
+        $user=User::where('id',$id)->get();
+        $user=$user->reject(function (User $user){
+            return $user;
+        });
+    }
+
+    function rejectUserByName($name){
+        $users=User::where('name',$name)->get();
+        $users=$users->reject(function (User $user){
+            return $users;
+        });
+    }
+    function RefreshUser($name){
+        $user=User::where('name',$name)->first();
+        $user->name=$name;
+        $user->refresh();
+        $user->$name;
+    return $user;
     }
 
     static function createUser($data){
@@ -26,6 +47,15 @@ class UserService{
         $user->password = $data["password"];
         $user->save();
         return $user;
+    }
+
+    function deleteUserById($id){
+        $user=User::find($id);
+        $user->delete();
+    }
+    function deleteUserByName($name){
+        $user=User::find($name);
+        $user->delete();
     }
 
 }
