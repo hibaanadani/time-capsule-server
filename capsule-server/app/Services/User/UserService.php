@@ -6,56 +6,37 @@ use App\Models\User;
 
 class UserService{
 
-    static function getAllUsers(){
+    static function getAllUsers($id=null){
+        if(!$id){
             return User::all();
+        } return User::find($id);
     }
 
-    static function getUserById($id){
-        return User::find($id);
+    static function UpdateUser($data, $user){
+        $user->username = $data["username"]; 
+        $user->email = $data["email"];
+        $user->password = bcrypt($data["password"]);
+
+        $user->save();
+        return $user;
     }
 
-    static function getUsersByName($name){
-        return User::find($name);
+    static function DeleteAllUsers($id=null){
+        if(!$id){
+            $user= User::all();
+        } $user=User::find($id);
+        $user->delete();
     }
 
-    function rejectUserByID($id){
+    function rejectUser($id){
         $user=User::where('id',$id)->get();
         $user=$user->reject(function (User $user){
             return $user;
         });
     }
 
-    function rejectUserByName($name){
-        $users=User::where('name',$name)->get();
-        $users=$users->reject(function (User $user){
-            return $users;
-        });
-    }
-    function RefreshUser($name){
-        $user=User::where('name',$name)->first();
-        $user->name=$name;
-        $user->refresh();
-        $user->$name;
+    function RefreshUser($id){
+       $user = User::where('id', $id)->first();
     return $user;
     }
-
-    static function createUser($data){
-        $user->firstname =$data["firstname"]; 
-        $user->lastname =  $data["lastname"];
-        $user->username =  $data["username"];
-        $user->email =  $data["email"];
-        $user->password = $data["password"];
-        $user->save();
-        return $user;
-    }
-
-    function deleteUserById($id){
-        $user=User::find($id);
-        $user->delete();
-    }
-    function deleteUserByName($name){
-        $user=User::find($name);
-        $user->delete();
-    }
-
 }

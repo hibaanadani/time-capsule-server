@@ -3,15 +3,20 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Common\AuthController;
+use App\Http\Controllers\User\MessageController;
+use App\Http\Controllers\Admin\MessageController as MessageadminController;;
 
-Route::group(["prefix" => "user"], function(){
-    Route::get("/users", [UserController::class, "getAllUsers"]);
-    Route::post("/add_update_user/{id?}", [UserController::class, "addOrUpdateUser"]);
-});
+Route::post("/login", [AuthController::class , "login"]);
+Route::post("/register", [AuthController::class , "register"]);
 
-Route::group(["prefix" => "message"], function(){
-    Route::get("/users", [MessageController::class, "getAllMessages"]);
-    Route::post("/add_update_message/{id?}", [MessageController::class, "addOrUpdateMessage"]);
-});
+Route::get("/get_all_users/{id}", [UserController::class , "getAllUsers"]);
+Route::get("/update_user/{id}", [UserController::class , "UpdateUser"]);
+Route::get("/delete_all_users/{id}", [UserController::class , "DeleteAllUsers"]);
+Route::get("/reject_user/{id}", [UserController::class , "rejectUser"]);
+Route::get("/refresh_user/{id}", [UserController::class , "RefreshUser"]);
+
+Route::get("/messages/{id?}", [MessageController::class, "getMessages"]);
+Route::post("/add_update_message/{id?}", [MessageController::class, "addOrUpdateMessages"]);
+Route::get("/delete_message/{id?}", [MessageController::class, "deleteAllMessage"]);

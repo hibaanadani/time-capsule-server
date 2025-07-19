@@ -8,48 +8,41 @@ use App\Models\User;
 class UserController extends Controller
 {
     //
-      function getAllUsers(){
-        $users = User::all();
-
-        $response = [];
-        $response["status"] = "success";
-        $response["payload"] = $users;
-
-        return json_encode($response, 200);
+      function getAllUsers($id = null){
+        $users = UserService::getAllUsers($id);
+         if($users){
+            return $this->responseJSON($users);
+        return $this->responseJSON(null, "error", 401);
     }
-      function getUserById(){
-        $users = User::all();
-
-        $response = [];
-        $response["status"] = "success";
-        $response["payload"] = $users;
-
-        return json_encode($response, 200);
+}
+    function UpdateUser(Request $request, $id){
+        $user = UserService::getAllUsers($id);
+        $user = UserService::UpdateUser($request, $user);
+        if($users){
+            return $this->responseJSON($users);
+        return $this->responseJSON(null, "error", 401);
     }
-      function getUsersByName(){
-        $users = User::fin;
-
-        $response = [];
-        $response["status"] = "success";
-        $response["payload"] = $users;
-
-        return json_encode($response, 200);
+}
+    function DeleteAllUsers($id = null){
+        $users = UserService::DeleteAllUsers($id);
+         if($users){
+            return $this->responseJSON($users);
+        return $this->responseJSON(null, "error", 401);
     }
-
-    function addUser(Request $request){
-        $user = new User;
-        $user->firstname =$data["firstname"]; 
-        $user->lastname =  $data["lastname"];
-        $user->username =  $data["username"];
-        $user->email =  $data["email"];
-        $user->password = $data["password"];
-        $user->save();
-        return $user;
-
-        $response = [];
-        $response["status"] = "success";
-        $response["payload"] = $user;
-
-        return json_encode($response, 200);
+}
+    function rejectUserByID($id){
+        $users = UserService::rejectUserByID($id);
+         if($users){
+            return $this->responseJSON($users);
+        return $this->responseJSON(null, "error", 401);
     }
+}   
+     function RefreshUser($id = null){
+        $users = UserService::RefreshUser($id);
+         if($users){
+            return $this->responseJSON($users);
+        return $this->responseJSON(null, "error", 401);
+    }
+}
+
 }
