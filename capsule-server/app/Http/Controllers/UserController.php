@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\UserService;
@@ -14,7 +15,7 @@ class UserController extends Controller{
             return $this->responseJSON(null, "error", 401);
         }
     }
-    
+
     function updateUser(Request $request, $id){
         $user = UserService::getAllUsers($id);
         $user = UserService::UpdateUser($request, $user);
