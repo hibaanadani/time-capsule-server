@@ -16,7 +16,7 @@ class MessageFactory extends Factory
             'image' => fake()->imageUrl(640, 480, 'messages', true),
             'audio' => fake()->url(),
             'color' => fake()->safeColorName(),
-            'revealdate' => fake()->dateTimeBetween('now', '+1 year'),
+            'reveal_date' => fake()->dateTimeBetween('now', '+1 year'),
             'privacy' => fake()->randomElement(['private', 'public', 'limited']), // Corrected line
             'location' => fake()->city() . ', ' . fake()->country(),
             'ipaddress' => fake()->ipv4(),

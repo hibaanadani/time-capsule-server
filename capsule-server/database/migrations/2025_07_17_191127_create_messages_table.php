@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("mood");
             $table->text("image");
             $table->text("audio");
-            $table->DateTime("revealdate");
+            $table->DateTime("reveal_date");
             $table->string("privacy");
             $table->string("location");
             $table->string("ipaddress");

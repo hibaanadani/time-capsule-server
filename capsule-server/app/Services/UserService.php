@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Services;
-
 use App\Models\User;
 
 class UserService{
@@ -12,16 +11,17 @@ class UserService{
         } return User::find($id);
     }
 
-    static function UpdateUser($data, $user){
-        $user->username = $data["username"]? $data["username"]:$user->username; 
-        $user->email = $data["email"]? $data["email"]:$user->email;
-        $user->password = bcrypt($data["password"]? $data["password"]:$user->password);
-
+    static function updateUser($data, $user){
+        $user->first_name = $data["first_name"]? $data["first_name"]: $user->first_name; 
+        $user->last_name = $data["last_name"]? $data["last_name"]: $user->last_name; 
+        $user->username = $data["username"]? $data["username"]: $user->username; 
+        $user->email = $data["email"]?$data["email"]:$user->email;
+        $user->password = bcrypt($data["password"]|| $user->password);
         $user->save();
         return $user;
     }
 
-    static function DeleteAllUsers($id=null){
+    function deleteAllUsers($id=null){
         if(!$id){
             $user= User::all();
         } $user=User::find($id);
@@ -35,7 +35,7 @@ class UserService{
         });
     }
 
-    static function RefreshUser($id){
+    static function refreshUser($id){
        $user = User::where('id', $id)->first();
     return $user;
     }
