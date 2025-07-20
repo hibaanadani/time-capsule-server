@@ -10,7 +10,7 @@ class MessageFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => \App\Models\User::factory(),
+            'user_id' => rand(1,20),
             'message' => fake()->paragraph(),
             'mood' => fake()->randomElement(['happy', 'sad', 'angry', 'excited', 'calm']),
             'image' => fake()->imageUrl(640, 480, 'messages', true),

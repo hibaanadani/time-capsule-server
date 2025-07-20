@@ -28,7 +28,7 @@ class MessageService
         return $message;
     }
     
-    function deleteAllMessage($id= null){
+    function deleteAllMessages($id= null){
       if(!$id){
             return Message::all();
         }

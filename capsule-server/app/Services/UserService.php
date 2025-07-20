@@ -24,7 +24,7 @@ class UserService{
     function deleteAllUsers($id=null){
         if(!$id){
             $user= User::all();
-        } $user=User::find($id);
+        } $user= User::find($id);
         $user->delete();
     }
 
