@@ -27,14 +27,14 @@ class MessageController extends Controller{
     }
     function deleteAllMessages($id = null){
         $messages = UserService::deleteAllMessage($id);
-         if($messages){
+        if($messages){
             return $this->responseJSON($messages);
         return $this->responseJSON(null, "error", 401);
     }
 }
   function refreshMessage($id){
         $messages = MessageService::RefreshMessage($id);
-         if($messages){
+        if($messages){
             return $this->responseJSON($messages);
         return $this->responseJSON(null, "error", 401);
     }

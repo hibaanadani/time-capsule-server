@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,10 +18,10 @@ class AuthService{
         $credentials = $request->only('email', 'password');
 
         $token = JWTAuth::attempt($credentials);
+
         if (!$token) {
             return null;
         }
-
         $user = JWTAuth::user();
         $user->token = $token;
         return $user;
@@ -46,6 +47,11 @@ class AuthService{
         $token = Auth::login($user);
 
         $user->token = $token;
+        return $user;
+    }
+
+    static function logout(){
+        $user = Auth::logout();
         return $user;
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\MessageController;
 
 Route::post("/login", [AuthController::class, "login"]);
 Route::post("/register", [AuthController::class, "register"]);
+Route::post("/logout", [AuthController::class, "logout"]);
 
 Route::get("/users/{id?}", [UserController::class , "getAllUsers"]);
 Route::post("/update_user/{id}", [UserController::class , "updateUser"]);
