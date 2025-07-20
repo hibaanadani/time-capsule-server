@@ -14,6 +14,7 @@ class UserController extends Controller{
             return $this->responseJSON(null, "error", 401);
         }
     }
+    
     function updateUser(Request $request, $id){
         $user = UserService::getAllUsers($id);
         $user = UserService::UpdateUser($request, $user);
@@ -22,6 +23,7 @@ class UserController extends Controller{
             return $this->responseJSON(null, "error", 401);
         }
     }
+
     function deleteAllUsers($id= null){
         $users = UserService::DeleteAllUsers($id);
         if($users){
