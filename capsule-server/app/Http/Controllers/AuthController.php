@@ -10,7 +10,6 @@ class AuthController extends Controller{
 
     public function login(Request $request){
         $user = AuthService::login($request);
-
         return $user? $this->responseJSON($user):
                       $this->responseJSON(null, "error", 401);
     }

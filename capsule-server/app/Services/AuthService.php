@@ -12,10 +12,11 @@ class AuthService{
    
     static function login(Request $request){
         $request->validate([
-            'email' => 'required|string|email',
+            'username' => 'required|string|',
+            // 'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
         $token = JWTAuth::attempt($credentials);
 
