@@ -38,8 +38,8 @@ class MessageService
         return true;}
         return false;
     }
-        static function refreshMessage($id){
+    static function refreshMessage($id){
        $message = Message::where('id', $id)->first();
-    return $message;
+        return $message;
+        }
     }
-}
