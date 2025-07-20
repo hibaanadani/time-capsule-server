@@ -26,7 +26,7 @@ class MessageController extends Controller{
     }
     }
     function deleteAllMessages($id = null){
-        $messages = UserService::deleteAllMessages($id);
+        $messages = MessageService::deleteAllMessages($id);
         if($messages){
             return $this->responseJSON($messages);
         return $this->responseJSON(null, "error", 401);

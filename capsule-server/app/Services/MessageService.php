@@ -15,15 +15,16 @@ class MessageService
     static function addMessage($message, $data){
         
         $message->user_id = $data["user_id"];
-        $message->color = $data["color"]?$data["color"]: $message->color ;
-        $message->mood =  $data["mood"]?$data["mood"] :  $message->mood;
-        $message->message =  $data["message"]?$data["message"]:  $message->message ;
-        $message->image =  $data["image"]?$data["image"]:  $message->image ;
-        $message->audio =  $data["audio"]?$data["audio"]:  $message->audio ;
-        $message->reveal_date =  $data["reveal_date"]?$data["reveal_date"]:  $message->reveal_date;
-        $message->location =  $data["location"]?$data["location"]:  $message->location ;
-        $message->ipaddress =  $data["ipaddress"]?$data["ipaddress"]:  $message->ipaddress ;
-        $message->privacy =  $data["privacy"]? $data["privacy"]:  $message->privacy ;
+        $message->color = $data["color"];
+        $message->mood =  $data["mood"];
+        $message->message =  $data["message"];
+        $message->image =  $data["image"] ;
+        $message->audio =  $data["audio"];
+        $message->reveal_date =  $data["reveal_date"];
+        $message->location =  $data["location"];
+        $message->ipaddress =  $data["ipaddress"];
+        $message->privacy =  $data["privacy"];
+
         $message->save();
         return $message;
     }
