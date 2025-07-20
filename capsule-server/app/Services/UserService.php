@@ -21,11 +21,14 @@ class UserService{
         return $user;
     }
 
-    function deleteAllUsers($id=null){
+    static function deleteAllUsers($id=null){
         if(!$id){
             $user= User::all();
         } $user= User::find($id);
+        if($user){
         $user->delete();
+        return true;}
+        return false;
     }
 
     function rejectUser($id){

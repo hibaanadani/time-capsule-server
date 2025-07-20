@@ -28,12 +28,15 @@ class MessageService
         return $message;
     }
     
-    function deleteAllMessages($id= null){
+    static function deleteAllMessages($id= null){
       if(!$id){
             return Message::all();
         }
         $message = Message::find($id);
+        if($message){
         $message->delete();
+        return true;}
+        return false;
     }
         static function refreshMessage($id){
        $message = Message::where('id', $id)->first();
