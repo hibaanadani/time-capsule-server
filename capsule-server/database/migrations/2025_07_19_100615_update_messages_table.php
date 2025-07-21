@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('messages', function (Blueprint $table) {
            $table->string("color")->after("audio");
+           $table->boolean("surprise_mode")->after("privacy");
         });
     }
 
