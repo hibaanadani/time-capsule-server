@@ -8,6 +8,7 @@ use App\Services\UserService;
 use App\Models\User;
 
 class UserController extends Controller{
+    
     function getAllUsers($id= null){
         $users = UserService::getAllUsers($id);
         if($users){

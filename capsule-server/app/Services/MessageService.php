@@ -13,7 +13,6 @@ class MessageService
     }
 
     static function addMessage($message, $data){
-        
         $message->user_id = $data["user_id"];
         $message->color = $data["color"];
         $message->mood =  $data["mood"];
@@ -28,7 +27,22 @@ class MessageService
         $message->save();
         return $message;
     }
-    
+    static function updateMessage($data, $message){
+        $message->user_id = $data["user_id"]? $data["user_id"]: $message->user_id;
+        $message->color = $data["color"]? $data["color"]: $message->color;
+        $message->mood =  $data["mood"]? $data["mood"]: $message->mood;
+        $message->message =  $data["message"]? $data["message"]: $message->message;
+        $message->image =  $data["image"] ? $data["image"]: $message->image;
+        $message->audio =  $data["audio"]? $data["audio"]: $message->audio;
+        $message->reveal_date =  $data["reveal_date"]? $data["reveal_date"]: $message->reveal_date;
+        $message->location =  $data["location"]? $data["location"]: $message->location;
+        $message->ipaddress =  $data["ipaddress"]? $data["ipaddress"]: $message->ipaddress;
+        $message->privacy =  $data["privacy"]? $data["privacy"]: $message->privacy;
+        $message->surprise_mode =  $data["surprise_mode"]? $data["surprise_mode"]: $message->surprise_mode;
+        $message->save();
+        return $message;
+    }
+
     static function deleteAllMessages($id= null){
       if(!$id){
             return Message::all();

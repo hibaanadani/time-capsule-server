@@ -15,8 +15,8 @@ class MessageController extends Controller{
         if($messages){
             return $this->responseJSON($messages);
         return $this->responseJSON(null, "error", 401);
+        }
     }
-}
     function addMessage(Request $request){
         $message = new Message;
         $message = MessageService::addMessage($message, $request);
@@ -24,6 +24,15 @@ class MessageController extends Controller{
             return $this->responseJSON($message);
         return $this->responseJSON(null, "error", 401);
     }
+    }
+    
+    function updateMessage(Request $request, $id){
+        $message = MessageService::getMessages($id);
+        $message = MessageService::updateMessage($request, $message);
+        if($message){
+            return $this->responseJSON($message);
+        return $this->responseJSON(null, "error", 401);
+        }
     }
     function deleteAllMessages($id = null){
         $messages = MessageService::deleteAllMessages($id);
