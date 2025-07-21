@@ -24,7 +24,7 @@ class MessageService
         $message->location =  $data["location"];
         $message->ipaddress =  $data["ipaddress"];
         $message->privacy =  $data["privacy"];
-
+        $message->surprise_mode =  $data["surprise_mode"];
         $message->save();
         return $message;
     }
