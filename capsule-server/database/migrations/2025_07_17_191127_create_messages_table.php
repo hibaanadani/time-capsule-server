@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->integer("user_id");
             $table->text("message");
-            $table->string("mood");
-            $table->text("image");
-            $table->text("audio");
-            $table->DateTime("reveal_date");
+            $table->string("mood")->nullable();;
+            $table->text("image")->nullable();;
+            $table->text("audio")->nullable();;
+            $table->Date("reveal_date");
             $table->string("privacy");
-            $table->string("location");
+            $table->string("location")->nullable();;
             $table->string("ipaddress");
             $table->timestamps();
         });
