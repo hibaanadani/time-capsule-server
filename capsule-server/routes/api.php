@@ -18,6 +18,7 @@ Route::post("/reject_user/{id}", [UserController::class , "rejectUser"]);
 Route::get("/refresh_user/{id}", [UserController::class , "refreshUser"]);
 
 Route::get("/messages/{id?}", [MessageController::class, "getMessages"]);
+Route::get("/get_messages_by_userid/{id}", [MessageController::class, "getMessagesBYUserId"]);
 Route::post("/add_message", [MessageController::class, "addMessage"]);
 Route::post("/update_message/{id}", [MessageController::class, "updateMessage"]);
 Route::post("/delete_message/{id?}", [MessageController::class, "deleteAllMessages"]);

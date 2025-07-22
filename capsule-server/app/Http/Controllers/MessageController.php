@@ -17,6 +17,13 @@ class MessageController extends Controller{
         return $this->responseJSON(null, "error", 401);
         }
     }
+    function getMessagesBYUserId($user_id){
+        $messages = MessageService::getMessagesBYUserId($user_id);
+        if($messages){
+            return $this->responseJSON($messages);
+        return $this->responseJSON(null, "error", 401);
+        }
+    }
     function addMessage(Request $request){
         $message = new Message;
         $message = MessageService::addMessage($message, $request);

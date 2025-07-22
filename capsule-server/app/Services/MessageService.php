@@ -11,6 +11,9 @@ class MessageService
         }
         return Message::find($id);
     }
+    static function getMessagesBYUserId($user_id = null){
+        return Message::where('user_id', $user_id)->get();
+    }
 
     static function addMessage($message, $data){
         $message->user_id = $data["user_id"];
