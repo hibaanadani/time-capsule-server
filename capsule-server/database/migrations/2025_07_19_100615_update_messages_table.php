@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('messages', function (Blueprint $table) {
-           $table->string("color")->after("audio")->nullable();;
+           $table->string("color")->after("audio")->nullable();
            $table->boolean("surprise_mode")->after("privacy");
+           $table->string("title")->after("user_id");
         });
     }
 

@@ -17,6 +17,7 @@ class MessageService
 
     static function addMessage($message, $data){
         $message->user_id = $data["user_id"];
+        $message->user_id = $data["title"];
         $message->color = $data["color"];
         $message->mood =  $data["mood"];
         $message->message =  $data["message"];
@@ -32,6 +33,7 @@ class MessageService
     }
     static function updateMessage($data, $message){
         $message->user_id = $data["user_id"]? $data["user_id"]: $message->user_id;
+        $message->title = $data["title"]? $data["title"]: $message->title;
         $message->color = $data["color"]? $data["color"]: $message->color;
         $message->mood =  $data["mood"]? $data["mood"]: $message->mood;
         $message->message =  $data["message"]? $data["message"]: $message->message;

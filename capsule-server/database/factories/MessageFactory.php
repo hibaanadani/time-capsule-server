@@ -11,6 +11,7 @@ class MessageFactory extends Factory
     {
         return [
             'user_id' => rand(1,20),
+            'title'=>fake()->sentence(3),
             'message' => fake()->paragraph(),
             'mood' => fake()->randomElement(['happy', 'sad', 'angry', 'excited', 'calm']),
             'image' => fake()->imageUrl(640, 480, 'messages', true),
