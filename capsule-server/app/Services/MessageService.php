@@ -14,6 +14,15 @@ class MessageService
     static function getMessagesBYUserId($user_id = null){
         return Message::where('user_id', $user_id)->get();
     }
+    static function getPublicOpenedMessages(){
+        $currentDate = new \DateTime(); 
+        $currentDate->setTime(0, 0, 0);
+        $formattedCurrentDate = $currentDate->format('Y-m-d');
+
+        return Message::where('privacy', 'public')
+                      ->where('reveal_date', '<=', $formattedCurrentDate)
+                      ->get();
+    }
 
     static function addMessage($message, $data){
         $message->user_id = $data["user_id"];
