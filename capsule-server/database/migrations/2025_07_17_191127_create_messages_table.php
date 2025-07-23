@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer("user_id");
             $table->text("message");
             $table->string("mood")->nullable();;
-            $table->text("image")->nullable();;
+            $table->LONGTEXT("image")->nullable();
             $table->text("audio")->nullable();;
             $table->Date("reveal_date");
             $table->string("privacy");

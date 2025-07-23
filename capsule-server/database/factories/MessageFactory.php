@@ -14,7 +14,7 @@ class MessageFactory extends Factory
             'title'=>fake()->sentence(3),
             'message' => fake()->paragraph(),
             'mood' => fake()->randomElement(['happy', 'sad', 'angry', 'excited', 'calm']),
-            'image' => fake()->imageUrl(640, 480, 'messages', true),
+            'image' => fake()->imageUrl(640, 480, 'messages', true, null, false, 'png'),
             'audio' => fake()->url(),
             'color' => fake()->colorName(),
             'reveal_date' => fake()->dateTimeBetween('now', '+1 year'),
