@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MessageController;
 
+Route::group(["prefix" =>"v0.1"], function(){
 Route::post("/login", [AuthController::class, "login"]);
 Route::post("/register", [AuthController::class, "register"]);
 Route::post("/logout", [AuthController::class, "logout"]);
@@ -24,3 +25,4 @@ Route::post("/add_message", [MessageController::class, "addMessage"]);
 Route::post("/update_message/{id}", [MessageController::class, "updateMessage"]);
 Route::post("/delete_message/{id?}", [MessageController::class, "deleteAllMessages"]);
 Route::get("/refresh_message/{id}", [UserController::class , "refreshMessage"]);
+});
