@@ -7,11 +7,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MessageController;
 
-Route::group(["prefix" =>"v0.1"], function(){
+Route::group(["prefix" => "guest"], function(){
     Route::post("/login", [AuthController::class, "login"]);
     Route::post("/register", [AuthController::class, "register"]);
     Route::post("/logout", [AuthController::class, "logout"]);
+});
 
+Route::group(["prefix" =>"v0.1"], function(){
     Route::get("/users/{id?}", [UserController::class , "getAllUsers"]);
     Route::post("/update_user/{id}", [UserController::class , "updateUser"]);
     Route::post("/delete_user/{id?}", [UserController::class , "deleteAllUsers"]);
