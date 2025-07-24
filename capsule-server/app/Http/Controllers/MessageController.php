@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\MessageService;
 use App\Models\Message;
 
-
 class MessageController extends Controller{
-    
 
     function getMessages($id= null){
         $messages = MessageService::getMessages($id);
@@ -17,6 +15,7 @@ class MessageController extends Controller{
         return $this->responseJSON(null, "error", 401);
         }
     }
+
     function getMessagesBYUserId($user_id){
         $messages = MessageService::getMessagesBYUserId($user_id);
         if($messages){
@@ -25,14 +24,13 @@ class MessageController extends Controller{
         }
     }
 
-    function getPublicOpenedMessages()
-    {
+    function getPublicOpenedMessages(){
         $messages = MessageService::getPublicOpenedMessages();
         if($messages){
             return $this->responseJSON($messages);
         return $this->responseJSON(null, "error", 401);
+        }
     }
-}
 
     function addMessage(Request $request){
         $message = new Message;
@@ -40,7 +38,7 @@ class MessageController extends Controller{
         if($message){
             return $this->responseJSON($message);
         return $this->responseJSON(null, "error", 401);
-    }
+        }
     }
     
     function updateMessage(Request $request, $id){
@@ -63,6 +61,6 @@ class MessageController extends Controller{
         if($messages){
             return $this->responseJSON($messages);
         return $this->responseJSON(null, "error", 401);
+        }
     }
-}
 }
